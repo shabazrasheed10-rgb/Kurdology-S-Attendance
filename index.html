@@ -897,6 +897,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Load the data for the activeDateKey
     selectDate(activeDateKey);
+
+    /* --- USER REQUEST: Delete specific historical records on load --- */
+function deleteHistoricalRecords() {
+    const targetDate = '2025-12-01';
+    const groupsToRemove = ['Group C', 'Group D', 'Group E'];
+    const subject = 'Kurdology'; // Hardcoded subject
+
+    groupsToRemove.forEach(group => {
+        const key = getAttendanceDataKey(targetDate, subject, group);
+        localStorage.removeItem(key);
+    });
+
+    // Optional: Log the action for confirmation
+    console.log(Removed attendance records for ${targetDate} for groups: ${groupsToRemove.join(', ')}.);
+}
+
+// Execute the cleanup immediately upon page load
+deleteHistoricalRecords();
+// Note: This call runs once. If you save/refresh, the records will be gone, and 
+// the selectDate/loadAttendance logic will correctly display 'No saved records'.
+/* ------------------------------------------------------------------ */
 });
 </script>
 </body>
