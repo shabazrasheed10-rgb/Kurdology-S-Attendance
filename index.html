@@ -411,7 +411,7 @@ const STUDENT_DATA_BY_GROUP = {
         { id: 'D-6', name: "ژیار کاروان عبدالمناف" }, { id: 'D-7', name: "ژیله ستار احمد" }, { id: 'D-8', name: "سات محمد سلیمان" }, { id: 'D-9', name: "سارا احمد اسعد" }, { id: 'D-10', name: "ساره شهریار مامند" },
         { id: 'D-11', name: "سافين سليم ابراهيم" }, { id: 'D-12', name: "سانا مظهر يوسف" }, { id: 'D-13', name: "ساویز کامران جلیل" }, { id: 'D-14', name: "سعد سالم حازم" }, { id: 'D-15', name: "سوز هه لمه ت کریم" },
         { id: 'D-16', name: "سوزی فواد احمد" }, { id: 'D-17', name: "سيتا فرهاد عبد الواحد" }, { id: 'D-18', name: "سيما حسن خضر" }, { id: 'D-19', name: "سيما سلام على" }, { id: 'D-20', name: "سيفا ستار شيخ" },
-        { id: 'D-21', name: "سيقال ئوزلم يمان" }, { id: 'D-22', name: "سيما عبدالرزاق بكر" }, { id: 'D-23', name: "سيما على حسين" }, { id: 'D-24', name: "سیما گیلانی محمد" }, { id: 'D-25', name: "سه پان کمال عبدالله" },
+        { id: 'D-21', name: "سيقال ئوزلم يمان" }, { id: 'D-22', name: "سیما عبدالرزاق بكر" }, { id: 'D-23', name: "سیما على حسين" }, { id: 'D-24', name: "سیما گیلانی محمد" }, { id: 'D-25', name: "سه پان کمال عبدالله" },
         { id: 'D-26', name: "سه رکه وت سعدی اسماعیل" }, { id: 'D-27', name: "سه لار هیوا قادر" }, { id: 'D-28', name: "سه هه ند عبد اللطيف مصطفى" }, { id: 'D-29', name: "شاجوان عبد السلام عثمان" }, { id: 'D-30', name: "شاد کاوه قاسم" },
         { id: 'D-31', name: "شاد ياسين عثمان" }, { id: 'D-32', name: "شانیل میرخان محمد" }, { id: 'D-33', name: "شانیا رزگار طه" }, { id: 'D-34', name: "شايه ن علي ابراهيم" }, { id: 'D-35', name: "شایی عبدالرحمن طه" },
         { id: 'D-36', name: "شه ن صلاح صالح" }, { id: 'D-37', name: "عبدالله هیمن ره شید" }, { id: 'D-38', name: "قاری کاروان سعيد" }, { id: 'D-39', name: "كوسار سيروان عبدالله" }, { id: 'D-40', name: "کابار فرحان عبدالله" },
@@ -883,7 +883,8 @@ function saveAttendance() {
 }
 
 /* --- INITIALIZATION ON PAGE LOAD --- */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { // Corrected starting point of listener
+
     // Ensure activeDateKey is initialized correctly
     if (!localStorage.getItem("lastDateKey")) {
         activeDateKey = REAL_TODAY_KEY;
@@ -896,29 +897,29 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeGroups();
 
     // 3. Load the data for the activeDateKey
-    selectDate(activeDateKey);});
+    selectDate(activeDateKey); 
 
     /* --- USER REQUEST: Delete specific historical records on load --- */
-function deleteHistoricalRecords() {
-    const targetDate = '2025-12-01';
-    const groupsToRemove = ['Group C', 'Group D', 'Group E'];
-    const subject = 'Kurdology'; // Hardcoded subject
+    function deleteHistoricalRecords() {
+        const targetDate = '2025-12-01';
+        const groupsToRemove = ['Group C', 'Group D', 'Group E'];
+        const subject = 'Kurdology'; // Hardcoded subject
 
-    groupsToRemove.forEach(group => {
-        const key = getAttendanceDataKey(targetDate, subject, group);
-        localStorage.removeItem(key);
-    });
+        groupsToRemove.forEach(group => {
+            const key = getAttendanceDataKey(targetDate, subject, group);
+            localStorage.removeItem(key);
+        });
 
-    // Optional: Log the action for confirmation
-    console.log(Removed attendance records for ${targetDate} for groups: ${groupsToRemove.join(', ')}.);
-}
+        // Optional: Log the action for confirmation
+        // FIX: Changed quotes to backticks for string interpolation
+        console.log(`Removed attendance records for ${targetDate} for groups: ${groupsToRemove.join(', ')}.`); 
+    }
 
-
-deleteHistoricalRecords();
-
+    deleteHistoricalRecords(); // Run function on load (after main logic)
 
     
-});
+}); // Correctly closes the DOMContentLoaded listener
 </script>
 </body>
 </html>
+
