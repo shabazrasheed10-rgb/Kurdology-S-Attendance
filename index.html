@@ -899,24 +899,7 @@ document.addEventListener('DOMContentLoaded', () => { // Corrected starting poin
     // 3. Load the data for the activeDateKey
     selectDate(activeDateKey); 
 
-    /* --- USER REQUEST: Delete specific historical records on load --- */
-    function deleteHistoricalRecords() {
-        const targetDate = '2025-12-01';
-        const groupsToRemove = ['Group C', 'Group D', 'Group E'];
-        const subject = 'Kurdology'; // Hardcoded subject
-
-        groupsToRemove.forEach(group => {
-            const key = getAttendanceDataKey(targetDate, subject, group);
-            localStorage.removeItem(key);
-        });
-
-        // Optional: Log the action for confirmation
-        // FIX: Changed quotes to backticks for string interpolation
-        console.log(`Removed attendance records for ${targetDate} for groups: ${groupsToRemove.join(', ')}.`); 
-    }
-
-    deleteHistoricalRecords(); // Run function on load (after main logic)
-
+    
     
 }); // Correctly closes the DOMContentLoaded listener
 </script>
