@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="ku" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<title>College Attendance System - Kurdology</title>
-<style>
+<!doctype html>
+<html lang="ku" dir="rtl"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Kurdology</title> 
+  <style>
     /* 🎨 Professional Color Palette */
     :root {
         --primary-color: #3A74E9; /* Deep Blue for header/buttons */
@@ -33,32 +33,87 @@
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
     }
-    h1 {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 600;
+    
+    
+    
+  
+    .logo{
+      order:2;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      
+      flex-wrap:nowrap;
     }
+    
+    
+    
+    
+     .logo h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;  
+    min-width: 0; 
+    margin-right:10px;   
+         
+}
+        
+      
+    
 
-    /* 🔑 Date Dropdown Styling */
+    
     #dateContainer {
         display: flex;
         align-items: center;
-        position: relative;
+        
         cursor: pointer;
         padding: 5px 10px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 6px;
-        margin-left: 20px;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius:4px;
+        order:1;
+        white-space: nowrap;  
+        transition: background-color 0.3s; /* Added transition */
+        
+        
+    }
+    
+    /* ⭐ NEW/MODIFIED CSS: Red background for Off Day in the header */
+    #dateContainer.off-day-display {
+        background-color: var(--off-day-color); 
+        color: white; 
     }
 
- .dropdown-icon{
+    #dateContainer.off-day-display #dateDisplay,
+    #dateContainer.off-day-display .dropdown-icon path {
+        color: white; 
+        fill: white; 
+    }
+    /* ⭐ END NEW/MODIFIED CSS */
+     
+    img{
+      height: 40px;
+      border-radius: 2px;
+     
+      
+    }
+    
+    .dropdown-icon{
       margin-right:10px;
       align-items: center;
       margin-top:4px;
- }
-.dropdown-icon2{ margin-top:5px;}
-               
+      
+    }
+    
+   .dropdown-icon2{
+     margin-top:5px;
+     order:2;
+   
+   }
     
     #dateDisplay {
         font-size: 18px;
@@ -79,6 +134,7 @@
         min-width: 200px;
         overflow-y: auto; /* Enable scrolling for many dates */
         max-height: 400px;
+        direction: left;
     }
     .date-option {
         padding: 10px 15px;
@@ -86,17 +142,19 @@
         cursor: pointer;
         border-bottom: 1px solid #f0f0f0;
         white-space: nowrap;
+        
     }
     .date-option:last-child {
         border-bottom: none;
     }
+   
     .date-option:hover {
-        background: #e9f0f9;
-        color: var(--primary-color);
+        background: #004d99;
+        color: white;
     }
     .date-option.selected {
         font-weight: bold;
-        background-color: #004d99;
+        background-color: #034893;
         color: white;
     }
     /* Updated style for Off Day in dropdown (removed text, kept color) */
@@ -169,6 +227,8 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
+        order:2;
+        
     }
 
     .selector-list {
@@ -187,9 +247,16 @@
 
     #groupBox {
         position: relative;
-        background-color:white;
+      background-color: white;
+    order:1;
+    
+    
     }
 
+ 
+   
+   
+ 
     .selector-option {
         padding: 12px 15px;
         cursor: pointer;
@@ -198,7 +265,6 @@
     .selector-option:last-child {
         border-bottom: none;
     }
-
     .selector-option:hover {
         background: #004da182;
         color: white;
@@ -314,80 +380,71 @@
         text-align: center;
         margin-top: 10px;
     }
-</style>
-</head>
-<body>
-<header>
-    <h1>HMU - College of Medicine</h1>
-    <div id="dateContainer" onclick="toggleDateDropdown()">
-        <div id="dateDisplay"></div>
-
-
-          <div class="dropdown-icon">
-          <span><svg width="24px" height="24px" viewBox="-4.08 -4.08 32.16 32.16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z" fill="#ffffff"></path> </g></svg></span>
-          
-          </div>
+   
+</style> 
+ </head> 
+ <body> 
+  <header> 
+    <div class="logo">
+        <h1>HMU - College of Medicine</h1> 
+   <img src="https://files.catbox.moe/pfd27s.jpg"> 
         
-
-
-
-
-        
-        <div id="dateDropdownList">
-            </div>
     </div>
-</header>
-<div class="container">
-<div id="selectors">
-    <div class="selector-box" style="cursor: default; background: #e9ecef;">
-        Kurdology
-    </div>
-
-    <div id="groupBox" class="selector-box" onclick="toggleGroups()">
-        <span id="selectedGroupText"></span>
-
-         <div class="dropdown-icon2">
-         <span><svg width="20px" height="20px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z" fill="#000000"></path> </g></svg></span> 
-          
-        </div>
-        
-
  
-
-        
-        <div id="groupsList" class="selector-list"></div>
-    </div>
-</div>
-
-<div id="summaryStats">
-    <div class="stat-card stat-total">
-        <h3>TOTAL STUDENTS</h3>
-        <p id="totalStudentsCount"></p>
-    </div>
-    <div class="stat-card stat-present">
-        <h3>PRESENT</h3>
-        <p id="presentCount"></p>
-    </div>
-    <div class="stat-card stat-absent">
-        <h3>ABSENT</h3>
-        <p id="absentCount"></p>
-    </div>
-    <div class="stat-card stat-unknown">
-        <h3>UNMARKED</h3>
-        <p id="unmarkedCount"></p>
-    </div>
-</div>
-
-<div class="reset-info">
-    Student Attendance - Stage 1
-</div>
-<div id="studentsList"></div>
-
-<button class="saveBtn" onclick="saveAttendance()">SAVE & LOCK ATTENDANCE FOR TODAY</button>
-<div id="statusMessage"></div>
-
-</div>
-<script>
+   <div id="dateContainer" onclick="toggleDateDropdown()"> 
+    <div id="dateDisplay"></div> 
+    <div class="dropdown-icon"> <span>
+      <svg width="24px" height="24px" viewbox="-4.08 -4.08 32.16 32.16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003">
+       <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"> 
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z" fill="#ffffff"></path> 
+       </g>
+      </svg></span> 
+    </div> 
+    <div id="dateDropdownList"> 
+    </div> 
+   </div> 
+  </header> 
+  <div class="container"> 
+   <div id="selectors"> 
+    <div class="selector-box" style="cursor: default; background: white; justify-content:center">
+      Kurdology
+    </div> 
+    <div id="groupBox" class="selector-box" onclick="toggleGroups()"> <span id="selectedGroupText"></span> 
+     <div class="dropdown-icon2"> <span>
+       <svg width="20px" height="20px" viewbox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"> 
+         <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z" fill="#000000"></path> 
+        </g>
+       </svg></span> 
+     </div> 
+     <div id="groupsList" class="selector-list"></div> 
+    </div> 
+   </div> 
+   <div id="summaryStats"> 
+    <div class="stat-card stat-total"> 
+     <h3>TOTAL STUDENTS</h3> 
+     <p id="totalStudentsCount"></p> 
+    </div> 
+    <div class="stat-card stat-present"> 
+     <h3>PRESENT</h3> 
+     <p id="presentCount"></p> 
+    </div> 
+    <div class="stat-card stat-absent"> 
+     <h3>ABSENT</h3> 
+     <p id="absentCount"></p> 
+    </div> 
+    <div class="stat-card stat-unknown"> 
+     <h3>UNMARKED</h3> 
+     <p id="unmarkedCount"></p> 
+    </div> 
+   </div> 
+   <div class="reset-info">
+     Student Attendance - Stage 1 
+   </div> 
+   <div id="studentsList"></div> <button class="saveBtn" onclick="saveAttendance()">SAVE &amp; LOCK ATTENDANCE FOR TODAY</button> 
+   <div id="statusMessage"></div> 
+  </div> 
+  <script>
 /* --- CONSTANTS & INITIAL DATA --- */
 // ALL_SUBJECTS array removed
 
@@ -435,7 +492,7 @@ const STUDENT_DATA_BY_GROUP = {
         { id: 'C-41', name: "کاشمه كوسار على" }, { id: 'C-42', name: "کەشەن بەشدار پوشو" }, { id: 'C-43', name: "لاڤينا دلير عبدالكريم" }, { id: 'C-44', name: "لانیا امیر محمد" }, { id: 'C-45', name: "لێزان نوزاد فاضل" },
         { id: 'C-46', name: "لەنیا مهدی حمدامین" }, { id: 'C-47', name: "متين احمد حمه سعید" }, { id: 'C-48', name: "محمد عثمان حمدامين" }, { id: 'C-49', name: "محمد کرخی شوکت" }, { id: 'C-50', name: "محمد مازن احمد" },
         { id: 'C-51', name: "مینا اومید مصطفی" }, { id: 'C-52', name: "نوها فهری اومر" }, { id: 'C-53', name: "وند محمد صديق ياسين" }, { id: 'C-54', name: "یار حسن قرەنی" }, { id: 'C-55', name: "یارا عصمت احمد" },
-        { id: 'C-56', name: "يوسف نجم الدین عثمان" }, { id: 'C-57', name: "ئاکار شوقی قادر" }, { id: 'C-58', name: "پەیڤین سفر محمد" }
+        { id: 'C-56', name: "یوسف نجم الدین عثمان" }, { id: 'C-57', name: "ئاکار شوقی قادر" }, { id: 'C-58', name: "پەیڤین سفر محمد" }
     ],
     
     'Group D': [
@@ -518,8 +575,8 @@ const STUDENT_DATA_BY_GROUP = {
 // The actual current date key (YYYY-MM-DD)
 const REAL_TODAY_KEY = getFormattedDateKey(new Date());
 
-// HARD-CODED SUBJECT: Kurdology
-let selectedSubject = 'Kurdology';
+// HARD-CODED SUBJECT: Computer
+let selectedSubject = 'Copmuter';
 let selectedGroup = localStorage.getItem("lastGroup") || ALL_GROUPS[0];
 // The currently active date key, defaults to today
 let activeDateKey = REAL_TODAY_KEY; 
@@ -557,16 +614,25 @@ function showStatusMessage(message, isOffDay = false) {
     document.getElementById("unmarkedCount").innerText = '—';
 }
 
-// 🔑 NEW: Main function to switch the active date
+// ⭐ MODIFIED: Main function to switch the active date (Implements the request)
 function selectDate(dateKey) {
     activeDateKey = dateKey;
     localStorage.setItem("lastDateKey", dateKey);
     document.getElementById("dateDisplay").innerText = getDisplayDate(dateKey);
     document.getElementById("dateDropdownList").style.display = "none";
+    
+    // Get the date container element
+    const dateContainer = document.getElementById("dateContainer");
+    // 1. Reset styling first
+    dateContainer.classList.remove("off-day-display"); 
 
     // 🔑 NEW FEATURE LOGIC: Off Day Check (Priority 1)
     if (isOffDay(activeDateKey)) {
-        document.getElementById("dateDisplay").innerText += " (Off day)"; // Add to the header display
+        // 2. Apply red background color/white text (as per request)
+        dateContainer.classList.add("off-day-display");
+        
+        // 3. (Implicitly) The text "(Off day)" is intentionally NOT added to dateDisplay.innerText here.
+        
         // Clear status message area
         document.getElementById("statusMessage").innerHTML = "";
         document.querySelector(".saveBtn").disabled = true;
@@ -626,8 +692,8 @@ function generateDateDropdownOptions() {
             div.classList.add("selected");
         }
         if (isHoliday) {
-            div.classList.add("off-day-text");
-            // div.innerText = getDisplayDate(dateKey) + " (Off day)"; // Removed the "(Off day)" text here
+            // This applies the red text to the dropdown option
+            div.classList.add("off-day-text"); 
         }
         
         div.innerText = getDisplayDate(dateKey); // Always set the display date
@@ -934,7 +1000,6 @@ document.addEventListener('DOMContentLoaded', () => { // Corrected starting poin
     
     
 }); // Correctly closes the DOMContentLoaded listener
-</script>
-</body>
+</script> 
+ </body>
 </html>
-
